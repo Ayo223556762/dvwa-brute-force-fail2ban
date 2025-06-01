@@ -40,10 +40,8 @@ Linux Terminal Utilities – nano, systemctl, fail2ban-client
 Objective:
 Use Fail2Ban to detect brute-force attacks by reading Apache access logs and banning IPs after repeated failed login attempts.
 
-Jail config (/etc/fail2ban/jail.local):
-ini
-Copy
-Edit
+### Jail configuration (`/etc/fail2ban/jail.local`)
+```ini
 [dvwa-brute]
 enabled  = true
 port     = http,https
@@ -51,16 +49,8 @@ filter   = dvwa-brute
 logpath  = /var/log/apache2/access.log
 maxretry = 3
 findtime = 60
-bantime = 300
-Custom filter (/etc/fail2ban/filter.d/dvwa-brute.conf):
-ini
-Copy
-Edit
-[Definition]
-failregex = ^<HOST> - - \[.*\] "POST /DVWA/vulnerabilities/brute/ HTTP/1\.0" 302
-ignoreregex =
-Outcome:
-The Fail2Ban jail was successfully created and monitored brute-force activity. Due to regex fine-tuning challenges, the IP ban wasn’t fully triggered — but the config and monitoring structure were correctly deployed.
+bantime  = 300
+```
 
 📸 See screenshots/fail2ban-status.png for status output
 
